@@ -18,7 +18,6 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    {{ __('You are logged in!') }}
                     <div class="row">
                         <div class="col-md-12">
                             @can('add articles')
