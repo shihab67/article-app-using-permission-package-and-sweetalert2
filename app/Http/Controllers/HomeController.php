@@ -26,10 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         $article = Article::all();
-        // $users = QueryBuilder::for(Article::class)
-        // ->allowedFilters(['author'])
-        // ->get();
-        // return $users;
+        $users = QueryBuilder::for(Article::class)
+        ->allowedFilters(['author'])
+        ->get();
+        //return $users;
         return view('home', compact('article'));
     }
 }

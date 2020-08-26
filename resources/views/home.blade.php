@@ -19,12 +19,10 @@
                     {{ __('Dashboard') }}
                     <div class="search">
                         <div class="row">
-                            <form method="GET">
-                                <div class="col-md-8">
-                                    <input type="text" class="form-contorl form-control-sm">
-                                </div>
-                                <div class="col-md-4"><button class="btn btn-primary btn-sm">Search</button></div>
-                            </form>
+                            <div class="col-md-8">
+                                <input type="text" class="form-contorl form-control-sm" name="input" id="input">
+                            </div>
+                            <div class="col-md-4"><button class="btn btn-primary btn-sm" class="search" id="search">Search</button></div>
                         </div>
                     </div>
                 </div>
@@ -83,7 +81,24 @@
 </div>
 <script>
 $( document ).ready(function() {
-console.log( "ready!" );
+    $("#search"). click(function(){
+    var str = $("#input").val();
+    //alert(str);
+    var url = window.location.pathname+"?[author]="+str;
+    alert(url);
+    var str = $("#input").val();
+    //var url = window.location.pathname."?[author]=".str;
+    //alert(window.location.pathname);
+    // $.ajax({
+    //     type: "GET",
+    //     url: window.location.pathname."?[author]=".str,
+    //     data: str,
+    //     cache: false,
+    //     success: function(data){
+    //         console.log(url);
+    //     }
+    //     });
+    });
 });
 </script>
 @endsection
