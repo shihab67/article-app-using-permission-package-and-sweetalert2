@@ -11,7 +11,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header h5">Update Articles</div>
+                <div class="card-header h5">Edit Articles</div>
                 <div class="card-body">
                     <form action="" method="POST">
                         @csrf

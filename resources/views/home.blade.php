@@ -4,6 +4,10 @@
     .table{
         padding-top: 10px;
     }
+    .search{
+        display: flex;
+        float: right;
+    }
 </style>
 @endsection
 @section('content')
@@ -11,7 +15,19 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">
+                    {{ __('Dashboard') }}
+                    <div class="search">
+                        <div class="row">
+                            <form method="GET">
+                                <div class="col-md-8">
+                                    <input type="text" class="form-contorl form-control-sm">
+                                </div>
+                                <div class="col-md-4"><button class="btn btn-primary btn-sm">Search</button></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -65,4 +81,9 @@
         </div>
     </div>
 </div>
+<script>
+$( document ).ready(function() {
+console.log( "ready!" );
+});
+</script>
 @endsection

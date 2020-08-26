@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Article;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         $article = Article::all();
+        // $users = QueryBuilder::for(Article::class)
+        // ->allowedFilters(['author'])
+        // ->get();
+        // return $users;
         return view('home', compact('article'));
     }
 }
