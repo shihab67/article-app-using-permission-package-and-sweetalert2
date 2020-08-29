@@ -4,6 +4,39 @@
 .row{
     padding: 5px 5px 5px 5px;
 }
+
+input.fieldname
+{
+    float:left;
+    clear:left;
+    display:block;
+    margin:5px;
+}
+select.fieldtype
+{
+    float:left;
+    display:block;
+    margin:5px;
+}
+input.remove
+{
+    float:left;
+    display:block;
+    margin:5px;
+}
+#yourform label
+{
+    float:left;
+    clear:left;
+    display:block;
+    margin:5px;
+}
+#yourform input, #yourform textarea
+{
+    float:left;
+    display:block;
+    margin:5px;
+}
 </style>
 @endsection
 @section('content')
@@ -18,7 +51,7 @@
             <div class="card">
                 <div class="card-header h5">Add Articles</div>
                 <div class="card-body">
-                    <form action="" method="POST">
+                    <form action="" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-md-4">
@@ -52,6 +85,16 @@
                                 <input type="date" name="date" class="form-control" value="{{ old('date') }}">
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="">Images:</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="button" value="Add" class="btn btn-primary btn-sm add" id="add" />
+                            </div>
+                            <div class="col-md-8" id="buildyourform">
+                            </div>
+                        </div>
                         <div class="row justify-content-center">
                             <button type="submit" class="btn btn-primary">Create</button>
                         </div>
@@ -61,4 +104,23 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+    $("#add").click(function() {
+    	var lastField = $("#buildyourform div:last");
+        var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
+        var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
+        fieldWrapper.data("idx", intId);
+        var div = $("<div class=\"custom-file\">");
+        var fName = $("<input type=\"file\" class=\"fieldname\" /> name=\"file\"");
+        var removeButton = $("<input type=\"button\" class=\"btn btn-danger btn-sm remove\" value=\"Remove\" />");
+        removeButton.click(function() {
+            $(this).parent().remove();
+        });
+        fieldWrapper.append(fName);
+        fieldWrapper.append(removeButton);
+        $("#buildyourform").append(fieldWrapper);
+    });
+});
+</script>
 @endsection

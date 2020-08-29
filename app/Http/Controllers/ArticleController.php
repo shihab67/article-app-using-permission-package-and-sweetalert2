@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\rc;
 use Illuminate\Http\Request;
 use App\Article;
+use File;
 
 class ArticleController extends Controller
 {
     public function store(Request $request)
     {
+        return $request;
         $request->validate([
             'title' => 'required',
             'author' => 'required',
